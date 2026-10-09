@@ -1,0 +1,138 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-lime: var(--lime);
+  --color-cyan-glow: var(--cyan-glow);
+  --color-violet-glow: var(--violet-glow);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.11 0.02 285);
+  --foreground: oklch(0.96 0.01 280);
+  --card: oklch(0.15 0.025 285);
+  --card-foreground: oklch(0.96 0.01 280);
+  --popover: oklch(0.15 0.025 285);
+  --popover-foreground: oklch(0.96 0.01 280);
+  --primary: oklch(0.85 0.2 130);
+  --primary-foreground: oklch(0.13 0.03 285);
+  --secondary: oklch(0.2 0.03 285);
+  --secondary-foreground: oklch(0.96 0.01 280);
+  --muted: oklch(0.2 0.03 285);
+  --muted-foreground: oklch(0.65 0.03 285);
+  --accent: oklch(0.22 0.05 300);
+  --accent-foreground: oklch(0.96 0.01 280);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.96 0.01 280);
+  --border: oklch(0.24 0.03 285);
+  --input: oklch(0.24 0.03 285);
+  --ring: oklch(0.85 0.2 130);
+  --lime: oklch(0.85 0.2 130);
+  --cyan-glow: oklch(0.8 0.15 210);
+  --violet-glow: oklch(0.62 0.22 300);
+  --surface: oklch(0.15 0.025 285);
+  --surface-2: oklch(0.19 0.03 285);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--lime);
+    color: var(--background);
+  }
+}
+
+@utility text-glow-lime {
+  text-shadow: 0 0 40px oklch(0.85 0.2 130 / 0.45);
+}
+
+@utility card-glow {
+  box-shadow:
+    0 0 0 1px oklch(1 0 0 / 4%),
+    0 20px 60px -20px oklch(0 0 0 / 60%);
+}
+
+@utility grain-overlay {
+  position: relative;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@utility animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@utility animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@utility animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
